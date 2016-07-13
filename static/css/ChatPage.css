@@ -1,0 +1,174 @@
+body{
+    width: 100vh;
+    height:100vh;
+    overflow: hidden;
+    background-color: #000223;
+}
+
+#main{
+    list-style-type: none;
+    position: absolute;
+    left:10%;
+    width: 90%;
+    height: 92%;
+    background-color:#555555;
+}
+
+#main > div{
+    display:inline-block;
+    margin-top: 0.5%;
+    margin-left:0.5%;
+    width: 24%;
+    height: 97%;
+    vertical-align: top;
+    border-radius: 2px;
+}
+
+#one{
+    background-color: #2aabd2;
+}
+
+#two{
+    background-color: #2b542c;
+
+}
+
+#three{
+    background-color: tomato;
+}
+
+#four{
+    background-color: #eea236;
+}
+#left{
+    width: 10%;
+    height:100%;
+    background-color:#777777;
+    position: absolute;
+    top: 0%;
+    left:0%;
+}
+
+.menu >span{
+    position: relative;
+    color:white;
+    font-size:150%;
+}
+
+.menu > p{
+    float: right;
+}
+
+#op{
+    position:fixed;
+    top:94%;
+    left:0.5%;
+    font-size: 300%;
+    color:white;
+}
+
+#bottom{
+    position: absolute;
+    bottom: 0%;
+    width: 90%;
+    height: 8%;
+    left:10%;
+    background-color:#999999;
+}
+
+#text{
+    width: 80%;
+    position: relative;
+    left:2%;
+    top:25%;
+    font-size: 200%;
+    height:60%;
+}
+
+#send{
+    width: 15%;
+    position: absolute;
+    right:2%;
+    top:20%;
+    font-size: 150%;
+}
+
+#one span{
+    position: relative;
+    left: 70%;
+    font-size: 250%;
+    margin-top: 3%;
+}
+
+#two span{
+    position: relative;
+    left: 70%;
+    font-size: 250%;
+    margin-top: 3%;
+}
+
+#three span{
+    position: relative;
+    left: 70%;
+    font-size: 250%;
+    margin-top: 3%;
+}
+
+
+#four span{
+    position: relative;
+    left: 70%;
+    font-size: 250%;
+    margin-top: 3%;
+}
+
+.title{
+    margin: 0 0 0 0;
+    font-size: 250%;
+    position: relative;
+    width:10%;
+    left:5%;
+    top:-80%;
+}
+
+
+.menu{
+    font-size: 120%;
+}
+
+#sort{
+    position: relative;
+    top:20%;
+}
+
+#sort div{
+    font-size: 200%;
+}
+
+.ue{
+    width:100%;
+    height:7%;
+    background-color: gainsboro;
+    border-radius:2px 2px 0px 0px;
+}
+
+.come{
+    overflow: auto;
+    width: 100%;
+    height:90%;
+    background-color:#FFFFFF;
+    border-radius:0px 0px 2px 2px;
+}
+
+.sen{
+    background-color: #1b6d85;
+    position: relative;
+    width:4%;
+    left:95%;
+    top:-150%;
+}
+
+.tousi{
+    display:none;
+}
+

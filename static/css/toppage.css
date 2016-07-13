@@ -1,0 +1,139 @@
+body{
+    background-color: aqua;
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+}
+
+video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+}
+
+.form-control::-moz-placeholder{
+    color: #9f9f9f;
+    font-size: 0.9em;
+}
+
+#login{
+    background-color: white;
+    width: 30%;
+    height:20%;
+    position: absolute;
+    top:20%;
+    right:5%;
+    border-radius: 10px;
+}
+
+#name{
+    position: absolute;
+    top:8%;
+    left:2%;
+    width: 95%;
+    font-size: 150%;
+}
+
+#pass{
+    position: absolute;
+    top:39%;
+    left:2%;
+    width: 60%;
+    font-size: 150%;
+}
+
+#log{
+    position: absolute;
+    top: 39%;
+    right: 3%;
+    width: 34%;
+    padding: 3px;
+    font-size: 180%;
+}
+
+#create{
+    background-color: white;
+    width: 30%;
+    height:40%;
+    position: absolute;
+    top:41%;
+    right:5%;
+    border-radius: 10px;
+}
+
+
+#newname{
+    position: absolute;
+    top:20%;
+    left:2%;
+    width: 95%;
+    font-size: 150%;
+}
+
+
+#newpass{
+    position: absolute;
+    top:40%;
+    left:2%;
+    width: 95%;
+    font-size: 150%;
+}
+
+
+#kakunin{
+    position: absolute;
+    top:60%;
+    left:2%;
+    width: 95%;
+    font-size:150%;
+}
+
+#crea{
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+    width: 34%;
+    padding: 3px;
+    font-size: 180%;
+}
+
+#cretitle{
+    position:absolute;
+    top:4%;
+    left:5%;
+    font-size: 200%;
+}
+
+#left{
+  position: absolute;
+  top:20%;
+  left:10%;
+  width: 52%;
+  height: 61%;
+
+    background-image: url("../fonts/smile.jpg");
+  background-size: cover;
+  border-radius: 10px;
+}
+
+#left p{
+  color: white;
+  font-size: 200%;
+}
+
+#Ty{
+  position: absolute;
+  bottom: 20%;
+    left:10%;
+}
+
+#ya{
+  position: absolute;
+  bottom:5%;
+    left:10%;
+}
