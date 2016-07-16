@@ -9,44 +9,37 @@ class BaseModel(Model):
     class Meta:
         database = database
 
-class Chat(BaseModel):
-    body = CharField(null=True)
-    chat = TextField(db_column='chat_id', primary_key=True)
-
-    class Meta:
-        db_table = 'chat'
-
 class Comments(BaseModel):
     comment = TextField()
-    comment_number = PrimaryKeyField()
     date = DateField()
-    id_number = IntegerField()
+    number = PrimaryKeyField()
     room_number = IntegerField()
+    user = IntegerField(db_column='user_id')
 
     class Meta:
         db_table = 'comments'
 
-class MenberInfo(BaseModel):
-    id_number = IntegerField()
-    menber_number = PrimaryKeyField()
+class MenbersInfo(BaseModel):
+    number = PrimaryKeyField()
     room_number = IntegerField()
+    user_number = IntegerField()
 
     class Meta:
-        db_table = 'menber_info'
+        db_table = 'menbers_info'
 
 class Rooms(BaseModel):
+    id = CharField(unique=True)
+    number = PrimaryKeyField()
     password = CharField()
-    room = CharField(db_column='room_id', unique=True)
-    room_number = PrimaryKeyField()
 
     class Meta:
         db_table = 'rooms'
 
 class Users(BaseModel):
-    id_name = CharField(unique=True)
-    id_number = PrimaryKeyField()
+    id = CharField(unique=True)
+    name = CharField(unique=True)
+    number = PrimaryKeyField()
     password = CharField()
-    user_name = CharField(unique=True)
 
     class Meta:
         db_table = 'users'
