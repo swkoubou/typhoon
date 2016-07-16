@@ -78,12 +78,20 @@ class AuthLoginHandler(BaseHandler):
     Login Page Handler
     """
     def post(self):
-        user = tornado.escape.xhtml_escape(self.get_argument("user"))
+        # get arguments from post method
+        username = tornado.escape.xhtml_escape(self.get_argument("username"))
         password = hashlib.sha1(
-            tornado.escape.xhtml_escape(self.get_argument("user"))
+            bytes(  # unicode object must be encode before hashing
+                tornado.escape.xhtml_escape( self.get_argument("password")),
+                "utf-8"
+            )
         ).hexdigest()
-        return json.dump({'is_success': True})
 
+        # login check
+        try:
+            pass
+        except:
+            pass
 
 class AuthSignUpHandler(BaseHandler):
     def post(self):
