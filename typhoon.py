@@ -75,9 +75,15 @@ class MainHandler(BaseHandler):
 
 class AuthLoginHandler(BaseHandler):
     """
-    Login Page Handler
+    Authorization API
+    endpoint: /auth/login
     """
     def post(self):
+        """
+        POST method:
+        @username   user's name
+        @password   user's password
+        """
         # get arguments from post method
         username = tornado.escape.xhtml_escape(self.get_argument("username"))
         password = hashlib.sha1(
@@ -101,7 +107,16 @@ class AuthLoginHandler(BaseHandler):
             self.write(json.dumps({'is_success': 'false'}))
 
 class AuthSignUpHandler(BaseHandler):
+    """
+    Authorization API
+    endpoint: /auth/signup
+    """
     def post(self):
+        """
+        POST method:
+        @username   user's new name
+        @password   user's new password
+        """
         # get arguments from post method
         username = tornado.escape.xhtml_escape(self.get_argument("username"))
         password = hashlib.sha1(
