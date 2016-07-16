@@ -30,6 +30,9 @@ class Application(tornado.web.Application):
             (r"/chatsocket", ChatSocketHandler),
             (r"/auth/login", AuthLoginHandler),
             (r"/auth/signup", AuthSignUpHandler),
+            (r"/room/create", RoomCreateHandler),
+            (r"/room/invite", RoomInviteHandler),
+            (r"/room/enter", RoomEnterHandler),
         ]
         settings = dict(
             cookie_secret="__TDDO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__",
@@ -73,6 +76,43 @@ class MainHandler(BaseHandler):
         self.render("index.html", messages=cache)
 
 
+class ChatSocketHandler(tornado.websocket.WebSocketHandler):
+    waiters = set()
+    cache = []
+    cache_size = 200
+
+    def get_compression_options(self):
+        return {}
+
+    def open(self):
+        ChatSocketHandler.waiters.add(self)
+
+    def on_close(self):
+        ChatSocketHandler.waiters.remove(self)
+
+    @classmethod
+    def send_updates(cls, chat):
+        logging.info("sending message to %d waiters", len(cls.waiters))
+        for waiter in cls.waiters:
+            try:
+                waiter.write_message(chat)
+            except:
+                logging.error("Error sending message", exc_info=True)
+
+    def on_message(self, message):
+        logging.info("got message %r", message)
+        parsed = tornado.escape.json_decode(message)
+
+        chat = {
+            "chat_id": Chat.add(parsed["body"]),   # Chat.add() return uuid
+            "body": parsed["body"]
+        }
+        chat["html"] = tornado.escape.to_basestring(
+            self.render_string("message.html", message=chat)
+        )
+        ChatSocketHandler.send_updates(chat)
+
+# API endpoints
 class AuthLoginHandler(BaseHandler):
     """
     Authorization API
@@ -105,6 +145,7 @@ class AuthLoginHandler(BaseHandler):
                 return
         except:
             self.write(json.dumps({'is_success': 'false'}))
+
 
 class AuthSignUpHandler(BaseHandler):
     """
@@ -143,42 +184,78 @@ class AuthSignUpHandler(BaseHandler):
             self.write(json.dumps({'is_success': 'false', 'reason': 'exsit'}))
 
 
-class ChatSocketHandler(tornado.websocket.WebSocketHandler):
-    waiters = set()
-    cache = []
-    cache_size = 200
+class RoomCreateHandler(BaseHandler):
+    """
+    endpoint: /room/create
+    """
+    def post(self):
+        # get arguments from post method
+        username = tornado.escape.xhtml_escape(self.get_argument("username"))
+        room_id = tornado.escape.xhtml_escape(self.get_argument("room_id"))
+        password = hashlib.sha1(
+            bytes(  # unicode object must be encode before hashing
+                tornado.escape.xhtml_escape( self.get_argument("password")),
+                "utf-8"
+            )
+        ).hexdigest()
 
-    def get_compression_options(self):
-        return {}
+        # check whethre this room_id is already exists
+        # and when database don't have this room_id, to save user
+        try:
+            db.Rooms.get(db.Rooms.id == room_id)
+        except: 
+            # save room_id and password in database
+            db.Rooms.create(
+                id=room_id,
+                password=password,
+            )
+            db.MenbersInfo.create(
+                user_number=db.Users.get(db.Users.name == username).number,
+                room_number=room.number,
+            )
+            self.write(json.dumps({'is_success': 'true'}))
+        else:
+            self.write(json.dumps({'is_success': 'false', 'reason': 'exsit'}))
 
-    def open(self):
-        ChatSocketHandler.waiters.add(self)
 
-    def on_close(self):
-        ChatSocketHandler.waiters.remove(self)
+class RoomInviteHandler(BaseHandler):
+    """
+    endpoint: /room/inite
+    """
+    def post(self):
+        pass
 
-    @classmethod
-    def send_updates(cls, chat):
-        logging.info("sending message to %d waiters", len(cls.waiters))
-        for waiter in cls.waiters:
-            try:
-                waiter.write_message(chat)
-            except:
-                logging.error("Error sending message", exc_info=True)
 
-    def on_message(self, message):
-        logging.info("got message %r", message)
-        parsed = tornado.escape.json_decode(message)
+class RoomEnterHandler(BaseHandler):
+    """
+    endpoint: /room/enter
+    """
+    def post(self):
+        # get arguments from post method
+        username = tornado.escape.xhtml_escape(self.get_argument("username"))
+        room_id = tornado.escape.xhtml_escape(self.get_argument("room_id"))
+        password = hashlib.sha1(
+            bytes(  # unicode object must be encode before hashing
+                tornado.escape.xhtml_escape( self.get_argument("password")),
+                "utf-8"
+            )
+        ).hexdigest()
 
-        chat = {
-            "chat_id": Chat.add(parsed["body"]),   # Chat.add() return uuid
-            "body": parsed["body"]
-        }
-        chat["html"] = tornado.escape.to_basestring(
-            self.render_string("message.html", message=chat)
-        )
-        ChatSocketHandler.send_updates(chat)
-
+        # login check
+        try:
+            room = db.Rooms.get(db.Rooms.id == room_id)
+            if password == room.password:   # successs login!
+                db.MenbersInfo.create(
+                    user_number=db.Users.get(db.Users.name == username).number,
+                    room_number=room.number,
+                )
+                self.write(json.dumps({'is_success': 'true'}))
+                return
+            else:
+                self.write(json.dumps({'is_success': 'false'}))
+                return
+        except:
+            self.write(json.dumps({'is_success': 'false'}))
 
 
 def main():
