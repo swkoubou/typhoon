@@ -27,9 +27,11 @@ class Application(tornado.web.Application):
         ]
         settings = dict(
             cookie_secret="__TDDO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__",
+            login_url="/login",
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
             xsrf_cookies=True,
+            debug=True;
         )
         super(Application, self).__init__(handlers, **settings)
 
@@ -45,10 +47,16 @@ class PeeweeRequestHandler(tornado.web.RequestHandler):
         return super(PeeweeRequestHandler, self).on_finish()
 
 
-class MainHandler(tornado.web.RequestHandler):
+class BaseHandler(tornado.web.RequestHandler):
+    def get_current_user(self):
+        return self.get_secure_cookie("user")
+
+
+class MainHandler(BaseHandler):
     """
     Main Handler
     """
+    @tornado.web.authenticated
     def get(self):
         cache = []
         for chat in Chat.genall():
@@ -59,12 +67,12 @@ class MainHandler(tornado.web.RequestHandler):
         self.render("index.html", messages=cache)
 
 
-class LoginHandler(tornado.web.RequestHandler):
+class LoginHandler(BaseHandler):
     """
     Login Page Handler
     """
-    def get(self):
-        self.render("login.html")
+    def post(self):
+        pass
 
 
 class ChatSocketHandler(tornado.websocket.WebSocketHandler):
