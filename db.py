@@ -28,18 +28,18 @@ class MenbersInfo(BaseModel):
         db_table = 'menbers_info'
 
 class Rooms(BaseModel):
-    id = CharField(unique=True)
+    id = TextField(unique=True)
     number = PrimaryKeyField()
-    password = CharField()
+    password = TextField()
 
     class Meta:
         db_table = 'rooms'
 
 class Users(BaseModel):
-    id = CharField(unique=True)
-    name = CharField(unique=True)
+    id = TextField(unique=True)
+    name = TextField(unique=True)
     number = PrimaryKeyField()
-    password = CharField()
+    password = TextField()
 
     class Meta:
         db_table = 'users'
