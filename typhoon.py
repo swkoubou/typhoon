@@ -89,8 +89,8 @@ class AuthSignUpHandler(BaseHandler):
     def post(self):
         # get arguments from post method
         username = tornado.escape.xhtml_escape(self.get_argument("username"))
-        password = hashlib.sha1(    # unicode object must be encode before hashing
-            bytes(
+        password = hashlib.sha1(
+            bytes(  # unicode object must be encode before hashing
                 tornado.escape.xhtml_escape( self.get_argument("password")),
                 "utf-8"
             )
