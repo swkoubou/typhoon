@@ -89,9 +89,16 @@ class AuthLoginHandler(BaseHandler):
 
         # login check
         try:
-            pass
+            user = db.Users.get(db.Users.name == username)
+            if password == user.password:   # successs login!
+                self.write(json.dumps({'is_success': 'true'}))
+                self.set_secure_cookie("user", username)
+                return
+            else:
+                self.write(json.dumps({'is_success': 'false'}))
+                return
         except:
-            pass
+            self.write(json.dumps({'is_success': 'false'}))
 
 class AuthSignUpHandler(BaseHandler):
     def post(self):
@@ -107,7 +114,7 @@ class AuthSignUpHandler(BaseHandler):
         # check whethre this username is already exists
         # and when database don't have this username, to save user
         try:
-            db.Users.select().where(db.Users.name == username).get()
+            db.Users.select().where(db.Users.name == username).get() # TODO: cange like AuthLoginHandler 
         except: 
             # save username and password in database
             db.Users.create(
