@@ -19,7 +19,7 @@ user_id INTEGER NOT NULL,
 room_number INTEGER NOT NULL
 );
 
-CREATE TABLE menbers_info 
+CREATE TABLE menbers_info (
 number SERIAL PRIMARY KEY,
 user_number INTEGER NOT NULL,
 room_number INTEGER NOT NULL
