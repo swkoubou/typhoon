@@ -15,11 +15,12 @@ import json
 import db
 import hashlib
 import model
+import config
 
 from tornado.options import define, options
 
 
-define("port", default=8888, help="run on the given port", type=int)
+define("port", default=config.web_server['port'], help="run on the given port", type=int)
 
 class Application(tornado.web.Application):
     """
@@ -107,7 +108,7 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
             "date": datetime.datetime.now(),
             "id": parsed['id'],
             "room_number": parsed['room_number'],
-        )
+        }
         ChatSocketHandler.send_updates(comment)
 
 # API endpoints

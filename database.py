@@ -4,12 +4,14 @@ Typhoon Chat System Controler
 """
 import uuid
 import datetime
+import config
 
 from peewee import (PostgresqlDatabase, Model, IntegerField,
                     CharField, TextField, DateField)
 
 
-db = PostgresqlDatabase('typhoon', user='uryoya')   # create db handler
+db = PostgresqlDatabase(config.db_server['name'], 
+                        user=config.db_server['user'])   # create db handler
 
 
 class BaseModel(Model):
