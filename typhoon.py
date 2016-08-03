@@ -14,6 +14,7 @@ import datetime
 import json
 import db
 import hashlib
+import model
 
 from tornado.options import define, options
 
@@ -78,8 +79,6 @@ class MainHandler(BaseHandler):
 
 class ChatSocketHandler(tornado.websocket.WebSocketHandler):
     waiters = set()
-    cache = []
-    cache_size = 200
 
     def get_compression_options(self):
         return {}
@@ -99,18 +98,17 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
             except:
                 logging.error("Error sending message", exc_info=True)
 
-    def on_message(self, message):
-        logging.info("got message %r", message)
-        parsed = tornado.escape.json_decode(message)
+    def on_comment(self, comment):
+        logging.info("got comment %r", comment)
+        parsed = tornado.escape.json_decode(comment)
 
-        chat = {
-            "chat_id": Chat.add(parsed["body"]),   # Chat.add() return uuid
-            "body": parsed["body"]
-        }
-        chat["html"] = tornado.escape.to_basestring(
-            self.render_string("message.html", message=chat)
+        comment = {
+            "comment": parsed['comment'],
+            "date": datetime.datetime.now(),
+            "id": parsed['id'],
+            "room_number": parsed['room_number'],
         )
-        ChatSocketHandler.send_updates(chat)
+        ChatSocketHandler.send_updates(comment)
 
 # API endpoints
 class AuthLoginHandler(BaseHandler):
