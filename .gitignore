@@ -63,3 +63,7 @@ target/
 
 # virtualenv dir
 venv/
+
+# config file
+config.py
+!config/config.*
