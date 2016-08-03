@@ -19,7 +19,7 @@ from peewee import (PostgresqlDatabase, Model, IntegerField,
 define("port", default=8888, help="run on the given port", type=int)
 
 
-db = PostgresqlDatabase('typhoon', user='uryoya')
+db = PostgresqlDatabase('typhoon', user='ak-galaxy')
 
 
 class BaseModel(Model):

@@ -18,16 +18,22 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
+
 <body>
     <div id="left">
+        <p id="typ" style="font-size:200%;">Typhoon<br>version.α</p>
         <div id="sort">
             <div id="leone" class="menu"><span class="glyphicon glyphicon-book" aria-hidden="true"></span><p>hoge</p></div>
             <div id="letwo" class="menu"><span class="glyphicon glyphicon-star" aria-hidden="true"></span><p>hage</p></div>
             <div id="lethree" class="menu"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span><p>hige</p></div>
             <div id="lefour" class="menu"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span><p>huge</p></div>
         </div>
+        <button type="button" id="edit" class="glyphicon glyphicon-list-alt" data-toggle="modal" data-target="#myModal"></button>
+        <button type="button" id="roomadd" class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#roomad"></button>
         <span id="op" class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
     </div>
+
+
     <div id="main">
         <div id="one">
             <p class="tousi">one</p>
@@ -71,9 +77,48 @@
         </div>
     </div>
 
+
     <div id="bottom">
         <input type="text" class="form-control input-sm" id="text">
-        <input type="button" class="btn btn-info" id="send" value="sousin">
+        <input type="button" class="btn btn-default" id="send" value="sousin">
+    </div>
+
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">ルーム編集したい気分ではなくない</h4>
+                </div>
+                <div class="modal-body" id="roomedit">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"onclick=list()>おくりびと</button>
+                      <button type="button" class="btn" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="roomad">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">ルーム追加したいんだけど気分が乗らない</h4>
+                </div>
+                <div class="modal-body">
+                  ルーム名：<input type="text">
+                  パスワード:<input type="text">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">おくりびと</button>
+                    <button type="button" class="btn" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="../static/js/bootstrap.min.js"></script>
