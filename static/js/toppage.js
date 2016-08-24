@@ -11,6 +11,7 @@ var cleate = function(){
                 username: id,
                 password: pass
             },
+        dataType:"json",
             success: function (data) {
                 alert("OK");
             },
@@ -33,6 +34,7 @@ var login = function () {
             username:id,
             password:pass
         },
+        dataType:"json",
         success:function(data){
             alert("OK");
         },
