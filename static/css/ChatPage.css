@@ -190,3 +190,9 @@ body{
     border-style: none;
     position: fixed;
 }
+
+#namae{
+    color: red;
+    font-size:200%;
+    z-index: 100;
+}
