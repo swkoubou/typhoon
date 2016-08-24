@@ -10,13 +10,18 @@ var cleate = function(){
         password: pass
     };
 
+
     $.ajax({
             type: 'POST',
             url: '/auth/signup',
             data:JSON.stringify(uho),
         dataType:"json",
             success: function (data) {
-                alert("OK");
+               if(data.is_success == "true"){
+                   location.href ="/";
+               }else{
+                   $("#sitazyo").text(data.reason);
+               }
             },
             error: function () {
                 $("#sitazyo").text("error!!");
@@ -42,7 +47,11 @@ var login = function () {
         data:JSON.stringify(uho),
         dataType:"json",
         success:function(data){
-            alert("OK");
+            if(data.is_success == "true"){
+                location.href ="/";
+            }else{
+                $("#sitazyo").text(data.reason);
+            }
         },
         error:function () {
             $("#uezyo").text("error!!");
