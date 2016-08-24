@@ -29,7 +29,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r"/", MainHandler),
-            (r"/toppage", ToppageHandler),
+            (r"/login", LoginHandler),
             (r"/chatsocket", ChatSocketHandler),
             (r"/auth/login", AuthLoginHandler),
             (r"/auth/signup", AuthSignUpHandler),
@@ -76,7 +76,15 @@ class MainHandler(BaseHandler):
                 self.render_string("message.html", message=chat)
             )
             cache.append(chat)
-        self.render("index.html", messages=cache)
+        self.render("ChatPage.html", messages=cache)
+
+
+class LoginHandler(BaseHandler):
+    """
+    Login Handler
+    """
+    def get(self):
+        self.render("Toppage.html")
 
 
 class ToppageHandler(BaseHandler):
@@ -130,10 +138,12 @@ class AuthLoginHandler(BaseHandler):
         @password   user's password
         """
         # get arguments from post method
-        username = tornado.escape.xhtml_escape(self.get_argument("username"))
+        data = tornado.escape.xhtml_escape(self.get_argument("data"))
+        data = json.loads(data)
+        username = data["username"]
         password = hashlib.sha1(
             bytes(  # unicode object must be encode before hashing
-                tornado.escape.xhtml_escape( self.get_argument("password")),
+                data["password"],
                 "utf-8"
             )
         ).hexdigest()
@@ -164,13 +174,16 @@ class AuthSignUpHandler(BaseHandler):
         @password   user's new password
         """
         # get arguments from post method
-        username = tornado.escape.xhtml_escape(self.get_argument("username"))
+        data = tornado.escape.xhtml_escape(self.get_argument("data"))
+        data = json.loads(data)
+        username = data["username"]
         password = hashlib.sha1(
             bytes(  # unicode object must be encode before hashing
-                tornado.escape.xhtml_escape( self.get_argument("password")),
+                data["password"],
                 "utf-8"
             )
         ).hexdigest()
+
 
         # check whethre this username is already exists
         # and when database don't have this username, to save user
@@ -195,11 +208,13 @@ class RoomCreateHandler(BaseHandler):
     """
     def post(self):
         # get arguments from post method
-        username = tornado.escape.xhtml_escape(self.get_argument("username"))
-        room_id = tornado.escape.xhtml_escape(self.get_argument("room_id"))
+        data = tornado.escape.xhtml_escape(self.get_argument("data"))
+        data = json.loads(data)
+        username = data["username"]
+        room_id = data["room_id"]
         password = hashlib.sha1(
             bytes(  # unicode object must be encode before hashing
-                tornado.escape.xhtml_escape( self.get_argument("password")),
+                data["password"],
                 "utf-8"
             )
         ).hexdigest()
@@ -237,11 +252,13 @@ class RoomEnterHandler(BaseHandler):
     """
     def post(self):
         # get arguments from post method
-        username = tornado.escape.xhtml_escape(self.get_argument("username"))
-        room_id = tornado.escape.xhtml_escape(self.get_argument("room_id"))
+        data = tornado.escape.xhtml_escape(self.get_argument("data"))
+        data = json.loads(data)
+        username = data["username"]
+        room_id = data["room_id"]
         password = hashlib.sha1(
             bytes(  # unicode object must be encode before hashing
-                tornado.escape.xhtml_escape( self.get_argument("password")),
+                data["password"],
                 "utf-8"
             )
         ).hexdigest()
