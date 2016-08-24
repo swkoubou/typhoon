@@ -1,4 +1,5 @@
 var look = "";
+var liste = new Array();
 
 window.onload = function aa(){
     var flag = true;
@@ -44,6 +45,12 @@ window.onload = function aa(){
             }
         });
     });
+
+    var ku = $('#main').sortable("toArray");
+    for(var i = 0;i < ku.length;i++){
+        liste[i] =  $('#'+ku[i]+"> .ue > .title").text();
+    }
+    
     pp();
     standby();
     list();
@@ -78,22 +85,18 @@ function send() {
 }
 
 function list(){
-    var ku = $('#main').sortable("toArray");
-    var list = new Array();
-    for(var i = 0;i < ku.length;i++){
-       list[i] =  $('#'+ku[i]+"> .ue > .title").text();
-    }
+
     $("#ici").empty();
     $("#ni").empty();
     $("#san").empty();
     $("#yon").empty();
 
 
-    for(var i = 0;i < list.length;i++){
-        $("#ici").append("<option value=\""+list[i] +"\">" + list[i] +"</option>");
-        $("#ni").append("<option value=\""+list[i] +"\">" + list[i] +"</option>");
-        $("#san").append("<option value=\""+list[i] +"\">" + list[i] +"</option>");
-        $("#yon").append("<option value=\""+list[i] +"\">" + list[i] +"</option>");
+    for(var i = 0;i < liste.length;i++){
+        $("#ici").append("<option value=\""+liste[i] +"\">" + liste[i] +"</option>");
+        $("#ni").append("<option value=\""+liste[i] +"\">" + liste[i] +"</option>");
+        $("#san").append("<option value=\""+liste[i] +"\">" + liste[i] +"</option>");
+        $("#yon").append("<option value=\""+liste[i] +"\">" + liste[i] +"</option>");
     }
 }
 
@@ -182,6 +185,7 @@ function roomset() {
         success: function (data) {
             if(data.is_success == "true"){
                 alert("OK");
+                list.push(id);
                 $('#roomad').modal('hide');
             }else{
                 alert("error!!");
@@ -219,6 +223,7 @@ function roomjoin() {
         success: function (data) {
             if(data.is_success == "true"){
                 alert("OK");
+                list.push(id);
                 $('#roomad').modal('hide');
             }else{
                 alert("error!!");
