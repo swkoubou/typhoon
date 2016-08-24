@@ -135,3 +135,38 @@ function pp() {
     }
     standby();
 };
+
+function roomset() {
+    var id = document.getElementById('roomname').value;
+    var pass = document.getElementById('roompass').value;
+
+
+    if(!pass || !id) {
+        alert("パスワードかアカウント名が空白");
+        return;
+    }
+
+    var uho ={
+        username: id,
+        password: pass
+    };
+
+
+    $.ajax({
+        type: 'POST',
+        url: '/room/create',
+        data:JSON.stringify(uho),
+        dataType:"json",
+        success: function (data) {
+            if(data.is_success == "true"){
+                alert("OK");
+                $('#roomad').modal('hide');
+            }else{
+                alert("error!!");
+            }
+        },
+        error: function () {
+            alert("kuso");
+        }
+    });
+}
