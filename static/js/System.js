@@ -13,7 +13,7 @@ $(document).ready(function () {
             return false;          
         }
     });
-    
+    updater.start();
 });
 
 function newMessage(form){
