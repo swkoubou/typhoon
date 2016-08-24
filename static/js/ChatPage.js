@@ -147,6 +147,7 @@ function pp() {
 function roomset() {
     var id = document.getElementById('roomname').value;
     var pass = document.getElementById('roompass').value;
+    var user = $('#namae').text();
 
 
     if(!pass || !id) {
@@ -155,7 +156,7 @@ function roomset() {
     }
 
     var uho ={
-        //username:
+        username:user,
         room_id: id,
         password: pass
     };
