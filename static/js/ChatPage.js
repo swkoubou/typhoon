@@ -201,7 +201,7 @@ function roomjoin() {
 
     $.ajax({
         type: 'POST',
-        url: '/room/create',
+        url: '/room/enter',
         data:JSON.stringify(uho),
         dataType:"json",
         success: function (data) {
