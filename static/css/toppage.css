@@ -137,3 +137,19 @@ video {
   bottom:5%;
     left:10%;
 }
+
+#uejyo{
+    position: absolute;
+    top:75%;
+    left:5%;
+    font-size: 200%;
+    color: red;
+}
+
+#sitazyo{
+    position: absolute;
+    top:78%;
+    left:5%;
+    font-size: 150%;
+    color: red;
+}
