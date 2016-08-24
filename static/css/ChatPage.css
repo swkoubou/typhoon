@@ -191,8 +191,6 @@ body{
     position: fixed;
 }
 
-#namae{
-    color: red;
-    font-size:200%;
-    z-index: 100;
+#namae {
+    display: none;
 }
