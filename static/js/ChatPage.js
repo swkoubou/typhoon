@@ -185,7 +185,7 @@ function roomset() {
         success: function (data) {
             if(data.is_success == "true"){
                 alert("OK");
-                list.push(id);
+                liste.push(id);
                 $('#roomad').modal('hide');
             }else{
                 alert("error!!");
@@ -223,7 +223,7 @@ function roomjoin() {
         success: function (data) {
             if(data.is_success == "true"){
                 alert("OK");
-                list.push(id);
+                liste.push(id);
                 $('#roomad').modal('hide');
             }else{
                 alert("error!!");
