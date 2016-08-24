@@ -78,9 +78,7 @@ function send() {
     };
 
     updater.socket.send(JSON.stringify(uho));
-
-    $("#"+look +" .come").append("<p>"+text+"</p>");
-    $("#"+look +" .come p:last").hide().slideDown();
+    
 
 }
 
