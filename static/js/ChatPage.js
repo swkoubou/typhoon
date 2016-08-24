@@ -181,6 +181,43 @@ function roomset() {
     });
 }
 
+function roomjoin() {
+    var id = document.getElementById('roomname').value;
+    var pass = document.getElementById('roompass').value;
+    var user = $('#namae').text();
+
+
+    if(!pass || !id) {
+        alert("パスワードかアカウント名が空白");
+        return;
+    }
+
+    var uho ={
+        username:user,
+        room_id: id,
+        password: pass
+    };
+
+
+    $.ajax({
+        type: 'POST',
+        url: '/room/create',
+        data:JSON.stringify(uho),
+        dataType:"json",
+        success: function (data) {
+            if(data.is_success == "true"){
+                alert("OK");
+                $('#roomad').modal('hide');
+            }else{
+                alert("error!!");
+            }
+        },
+        error: function () {
+            alert("kuso");
+        }
+    });
+}
+
 function change() {
     var ici = document.getElementById('ici').value;
     var ni = document.getElementById('ni').value;
