@@ -1,6 +1,7 @@
 var look = "";
 
 window.onload = function aa(){
+    alert(document.cookie);
     var flag = true;
     var sort = document.getElementById('sort');
     $(function () {
@@ -147,7 +148,8 @@ function roomset() {
     }
 
     var uho ={
-        username: id,
+        //username:
+        room_id: id,
         password: pass
     };
 
