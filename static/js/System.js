@@ -44,11 +44,7 @@ var updater = {
     },
 
     showMessage: function(message) { //変わらず
-        var existing = $("#m" + message.id);
-        if (existing.length > 0) return;
-        var node = $(message.html);
-        node.hide(); //隠す
-        $("#inbox").append(node); //inbox末尾にnodeを挿入
-        node.slideDown(); //挿入時のアニメーション
+        $("#"+message.room_id +" .come").append("<p>"+message.comment+"</p>");
+        $("#"+message.room_id +" .come p:last").hide().slideDown();
     }
 };

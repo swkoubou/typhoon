@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4393dd97-6343-4ed4-8ed5-f27f5fc10d93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/ChatPage.js" afterPath="$PROJECT_DIR$/static/js/ChatPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/System.js" afterPath="$PROJECT_DIR$/static/js/System.js" />
     </list>
     <ignored path="typhoon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,21 +25,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ChatPage.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ChatPage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/js/ChatPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="25">
-                  <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+                <state relative-caret-position="457">
+                  <caret line="82" column="5" selection-start-line="80" selection-start-column="0" selection-end-line="82" selection-end-column="52" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="System.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="System.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/System.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="633">
-                  <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+                <state relative-caret-position="795">
+                  <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
                   <folding />
                 </state>
               </provider>
@@ -90,10 +90,10 @@
         <option value="$PROJECT_DIR$/static/css/toppage.css" />
         <option value="$PROJECT_DIR$/templates/Toppage.html" />
         <option value="$PROJECT_DIR$/static/js/toppage.js" />
-        <option value="$PROJECT_DIR$/static/js/System.js" />
         <option value="$PROJECT_DIR$/static/css/ChatPage.css" />
         <option value="$PROJECT_DIR$/templates/ChatPage.html" />
         <option value="$PROJECT_DIR$/static/js/ChatPage.js" />
+        <option value="$PROJECT_DIR$/static/js/System.js" />
       </list>
     </option>
   </component>
@@ -320,12 +320,12 @@
       <workItem from="1472044207357" duration="6341000" />
       <workItem from="1472051619141" duration="144000" />
       <workItem from="1472052802764" duration="7949000" />
-      <workItem from="1472063422428" duration="3190000" />
+      <workItem from="1472063422428" duration="3564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23643000" />
+    <option name="totallyTimeSpent" value="24017000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
@@ -588,26 +588,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/System.js">
+    <entry file="file://$PROJECT_DIR$/templates/ChatPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+        <state relative-caret-position="180">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/ChatPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+        <state relative-caret-position="457">
+          <caret line="82" column="5" selection-start-line="80" selection-start-column="0" selection-end-line="82" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ChatPage.html">
+    <entry file="file://$PROJECT_DIR$/static/js/System.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="795">
+          <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
           <folding />
         </state>
       </provider>
