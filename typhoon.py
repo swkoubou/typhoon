@@ -28,6 +28,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r"/", MainHandler),
+            (r"/login", LoginHandler),
             (r"/chatsocket", ChatSocketHandler),
             (r"/auth/login", AuthLoginHandler),
             (r"/auth/signup", AuthSignUpHandler),
@@ -75,6 +76,14 @@ class MainHandler(BaseHandler):
             )
             cache.append(chat)
         self.render("ChatPage.html", messages=cache)
+
+
+class LoginHandler(BaseHandler):
+    """
+    Login Handler
+    """
+    def get(self):
+        self.render("Toppage.html")
 
 
 class ChatSocketHandler(tornado.websocket.WebSocketHandler):
