@@ -44,7 +44,7 @@ var updater = {
     },
 
     showMessage: function(message) { //変わらず
-        var i = $('#sort').sortable("toArray");
+        var i = $('#main').sortable("toArray");
         for(var p = 0;p<i.length;p++){
             if(message.room_id == $("#" + i[p]+"> .ue > .title").text()){
                 $("#"+i[p]+" .come").append("<p>"+message.comment+"</p>");
