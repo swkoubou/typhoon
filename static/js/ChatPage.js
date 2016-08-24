@@ -1,7 +1,6 @@
 var look = "";
 
 window.onload = function aa(){
-    alert(document.cookie);
     var flag = true;
     var sort = document.getElementById('sort');
     $(function () {
