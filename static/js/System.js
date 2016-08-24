@@ -44,7 +44,12 @@ var updater = {
     },
 
     showMessage: function(message) { //変わらず
-        $("#"+message.room_id +" .come").append("<p>"+message.comment+"</p>");
-        $("#"+message.room_id +" .come p:last").hide().slideDown();
+        var i = $('#sort').sortable("toArray");
+        for(var p = 0;p<i.length;p++){
+            if(message.room_id == $("#" + i[p]+"> .ue > .title").text()){
+                $("#"+i[p]+" .come").append("<p>"+message.comment+"</p>");
+                $("#"+i[p] +" .come p:last").hide().slideDown();
+            }
+        }
     }
 };
