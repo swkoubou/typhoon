@@ -60,9 +60,21 @@ function send() {
         alert("nassi");
         return;
     }
+    var user = $('#namae').text();
+    var room = $("#" +look +"> .ue > .title").text();
     document.getElementById('text').value = "";//テキストボックスを空に
+
+    var uho ={
+        username:user,
+        room_id:room,
+        comment:text
+    };
+
+    updater.socket.send(JSON.stringify(uho));
+
     $("#"+look +" .come").append("<p>"+text+"</p>");
     $("#"+look +" .come p:last").hide().slideDown();
+
 }
 
 function list(){
