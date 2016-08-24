@@ -29,11 +29,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r"/", MainHandler),
-<<<<<<< HEAD
             (r"/login", LoginHandler),
-=======
-            (r"/toppage", ToppageHandler),
->>>>>>> master
             (r"/chatsocket", ChatSocketHandler),
             (r"/auth/login", AuthLoginHandler),
             (r"/auth/signup", AuthSignUpHandler),
