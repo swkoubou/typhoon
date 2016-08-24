@@ -23,7 +23,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Toppage.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Toppage.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/Toppage.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="57">
@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toppage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="toppage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/toppage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+            <state relative-caret-position="180">
+              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -295,12 +295,12 @@
       <workItem from="1470370896958" duration="203000" />
       <workItem from="1470371423875" duration="793000" />
       <workItem from="1470372568435" duration="8000" />
-      <workItem from="1472044207357" duration="5542000" />
+      <workItem from="1472044207357" duration="6341000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11561000" />
+    <option name="totallyTimeSpent" value="12360000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
@@ -466,14 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Toppage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/toppage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
@@ -484,8 +476,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/toppage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+        <state relative-caret-position="180">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Toppage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>

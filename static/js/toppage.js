@@ -3,7 +3,14 @@ var cleate = function(){
     var pass = document.getElementById('newpass').value;
     var kaku = document.getElementById('kakunin').value;
 
-    if(pass != kaku)return;
+    if(pass != kaku) {
+        $("#sitazyo").text("パスワードが一致しません");
+        return;
+    }
+    if(!pass || !id) {
+        $("#sitazyo").text("パスワードかアカウント名が空白");
+        return;
+    }
 
     var uho ={
         username: id,
@@ -20,11 +27,11 @@ var cleate = function(){
                if(data.is_success == "true"){
                    location.href ="/";
                }else{
-                   $("#sitazyo").text(data.reason);
+                   $("#sitazyo").text("既にあるアカウント");
                }
             },
             error: function () {
-                $("#sitazyo").text("error!!");
+                $("#sitazyo").text("通信エラー");
                 document.getElementById('newname').value = "";
                 document.getElementById('newpass').value = "";
                 document.getElementById('kakunin').value = "";
@@ -40,7 +47,7 @@ var login = function () {
         username: id,
         password: pass
     };
-    
+
     $.ajax({
         type:'POST',
         url:'/auth/login',
@@ -50,14 +57,13 @@ var login = function () {
             if(data.is_success == "true"){
                 location.href ="/";
             }else{
-                $("#sitazyo").text(data.reason);
+                $("#sitazyo").text("ユーザー名が違うかパスワードが一致しません");
             }
         },
         error:function () {
-            $("#uezyo").text("error!!");
+            $("#uezyo").text("通信エラー");
             document.getElementById('name').value = "";
             document.getElementById('pass').value = "";
         }
     });
 };
-
