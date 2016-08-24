@@ -57,7 +57,7 @@ var login = function () {
             if(data.is_success == "true"){
                 location.href ="/";
             }else{
-                $("#sitazyo").text("ユーザー名が違うかパスワードが一致しません");
+                $("#uezyo").text("ユーザー名が違うかパスワードが一致しません");
             }
         },
         error:function () {
