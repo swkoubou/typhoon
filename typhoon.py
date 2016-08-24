@@ -74,7 +74,7 @@ class MainHandler(BaseHandler):
                 self.render_string("message.html", message=chat)
             )
             cache.append(chat)
-        self.render("index.html", messages=cache)
+        self.render("ChatPage.html", messages=cache)
 
 
 class ChatSocketHandler(tornado.websocket.WebSocketHandler):
@@ -107,7 +107,7 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
             "date": datetime.datetime.now(),
             "id": parsed['id'],
             "room_number": parsed['room_number'],
-        )
+        }
         ChatSocketHandler.send_updates(comment)
 
 # API endpoints
