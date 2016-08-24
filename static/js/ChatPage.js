@@ -72,9 +72,17 @@ function list(){
     for(var i = 0;i < ku.length;i++){
        list[i] =  $('#'+ku[i]+"> .ue > .title").text();
     }
-    $("#roomedit").empty();
+    $("#ici").empty();
+    $("#ni").empty();
+    $("#san").empty();
+    $("#yon").empty();
+
+
     for(var i = 0;i < list.length;i++){
-        $("#roomedit").append("<input type=\"checkbox\" class=\"check\" value=\"" + list[i] + "\">" + list[i]);
+        $("#ici").append("<option value=\""+list[i] +"\">" + list[i] +"</option>");
+        $("#ni").append("<option value=\""+list[i] +"\">" + list[i] +"</option>");
+        $("#san").append("<option value=\""+list[i] +"\">" + list[i] +"</option>");
+        $("#yon").append("<option value=\""+list[i] +"\">" + list[i] +"</option>");
     }
 }
 
@@ -85,10 +93,10 @@ function ace() {
         arr.push($(this).html());
     });
     $("#sort").empty();
-    for(p = 0;p < arr.length;p++) {
+    for(p = 0;p < 4;p++) { //arr.length
         var ge = document.getElementById(i[p]).getElementsByClassName('title');
         var ser = ge[0].innerHTML;
-        for (z = 0; z < arr.length; z++) {
+        for (z = 0; z < 4; z++) {
             if (arr[z].indexOf(ser) != -1) {
                 $("#sort").append('<div id="le' + i[p] + '" class="menu">' + arr[z] + '</div>');
             }
@@ -171,4 +179,28 @@ function roomset() {
             alert("kuso");
         }
     });
+}
+
+function change() {
+    var ici = document.getElementById('ici').value;
+    var ni = document.getElementById('ni').value;
+    var san= document.getElementById('san').value;
+    var yon = document.getElementById('yon').value;
+
+    if(ici == ni || ici == san || ici == yon || ni == san || ni == yon || san == yon){
+        alert("ルームが重複しています");
+        return;
+    }
+
+    $('#one > .ue > .title').text(ici);
+    $('#two > .ue > .title').text(ni);
+    $('#three > .ue > .title').text(san);
+    $('#four > .ue > .title').text(yon);
+
+    $('#leone > p').text(ici);
+    $('#letwo > p').text(ni);
+    $('#lethree > p').text(san);
+    $('#lefour > p').text(yon);
+
+    return;
 }
