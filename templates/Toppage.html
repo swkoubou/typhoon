@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,17 +28,19 @@
     </div>
 
     <div id="login">
-      <input type="text" class="form-control input-lg" id="name" placeholder="ID">
+      <input type="text" class="form-control input-lg" id="name" placeholder="UserName">
       <input type="password" class="form-control input-lg" id="pass" placeholder="Password">
-      <input type="button" class="btn btn-warning" id="log" value="Log In">
+      <input type="button" class="btn btn-warning" id="log" value="Log In" onclick="login()">
+      <p id="uejyo"></p>
     </div>
 
     <div id="create">
       <p id="cretitle">Create Typhoon</p>
-      <input type="text" class="form-control input-lg" id="newname" placeholder="New ID">
+      <input type="text" class="form-control input-lg" id="newname" placeholder="New UserName">
       <input type="password" class="form-control input-lg" id="newpass" placeholder="New Password">
       <input type="password" class="form-control input-lg" id="kakunin" placeholder="Confirm Password">
-      <input type="button" class="btn btn-warning" id="crea" value="Create">
+      <input type="button" class="btn btn-warning" id="crea" value="Create" onclick="cleate()">
+      <p id="sitazyo"></p>
     </div>
 
 
@@ -46,5 +48,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/toppage.js"></script>
   </body>
 </html>
