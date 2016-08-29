@@ -47,7 +47,7 @@ var updater = {
         var i = $('#main').sortable("toArray");
         for(var p = 0;p<i.length;p++){
             if(message.room_id == $("#" + i[p]+"> .ue > .title").text()){
-                $("#"+i[p]+" .come").append("<p>"+message.comment+"</p>");
+                $("#"+i[p]+" .come").append("<p class='nusi'>"+message.username+"</p><br>" + "<p class='yonex'>"+message.comment+"</p>");
                 $("#"+i[p] +" .come p:last").hide().slideDown();
             }
         }
