@@ -1,5 +1,7 @@
 var look = "";
 var liste = new Array();
+var totalcome = {'hage': null,'hoge':null,'huge':null,'hige':null};
+var ici,ni,san,yon;
 
 window.onload = function aa(){
     var flag = true;
@@ -54,6 +56,7 @@ window.onload = function aa(){
     pp();
     standby();
     list();
+    komeget();
     sort.addEventListener('mouseup',function () {setTimeout(pp,200)},false);
 };
 
@@ -183,7 +186,8 @@ function roomset() {
         success: function (data) {
             if(data.is_success == "true"){
                 alert("OK");
-                liste.push(id)
+                liste.push(id);
+                totalcome[id] = null;
                 list();
                 $('#roomad').modal('hide');
             }else{
@@ -236,10 +240,14 @@ function roomjoin() {
 }
 
 function change() {
-    var ici = document.getElementById('ici').value;
-    var ni = document.getElementById('ni').value;
-    var san= document.getElementById('san').value;
-    var yon = document.getElementById('yon').value;
+    komeget();
+
+    $(".come").empty();
+    
+     ici = document.getElementById('ici').value;
+     ni = document.getElementById('ni').value;
+     san= document.getElementById('san').value;
+     yon = document.getElementById('yon').value;
 
     if(ici == ni || ici == san || ici == yon || ni == san || ni == yon || san == yon){
         alert("ルームが重複しています");
@@ -256,5 +264,26 @@ function change() {
     $('#lethree > p').text(san);
     $('#lefour > p').text(yon);
 
+    $('#one > .come').text(totalcome[ici]);
+    $('#two > .come').text(totalcome[ni]);
+    $('#three > .come').text(totalcome[san]);
+    $('#four > .come').text(totalcome[yon]);
+    
+    $('#myModal').modal('hide');
+
     return;
+}
+
+function komeget(){
+    var an = $('#one').find('.title').html();
+    totalcome[an] = $('#one').children('.come').html();
+    an = $('#two').find('.title').text();
+    totalcome[an] = $('#two').children('.come').html();
+    var an = $('#three').find('.title').text();
+    totalcome[an] = $('#three').children('.come').html();
+    var an = $('#four').find('.title').text();
+    totalcome[an] = $('#four').children('.come').html();
+
+    console.log(totalcome);
+    
 }
