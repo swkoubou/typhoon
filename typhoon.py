@@ -137,9 +137,7 @@ class AuthLoginHandler(BaseHandler):
         @username   user's name
         @password   user's password
         """
-        # get arguments from post method
-        data = tornado.escape.xhtml_escape(self.get_argument("data"))
-        data = json.loads(data)
+        data = json.loads(self.get_argument("data"))
         username = data["username"]
         password = hashlib.sha1(
             bytes(  # unicode object must be encode before hashing
@@ -174,8 +172,7 @@ class AuthSignUpHandler(BaseHandler):
         @password   user's new password
         """
         # get arguments from post method
-        data = tornado.escape.xhtml_escape(self.get_argument("data"))
-        data = json.loads(data)
+        data = json.loads(self.get_argument("data"))
         username = data["username"]
         password = hashlib.sha1(
             bytes(  # unicode object must be encode before hashing
@@ -208,8 +205,7 @@ class RoomCreateHandler(BaseHandler):
     """
     def post(self):
         # get arguments from post method
-        data = tornado.escape.xhtml_escape(self.get_argument("data"))
-        data = json.loads(data)
+        data = json.loads(self.get_argument("data"))
         username = data["username"]
         room_id = data["room_id"]
         password = hashlib.sha1(
@@ -252,8 +248,7 @@ class RoomEnterHandler(BaseHandler):
     """
     def post(self):
         # get arguments from post method
-        data = tornado.escape.xhtml_escape(self.get_argument("data"))
-        data = json.loads(data)
+        data = json.loads(self.get_argument("data"))
         username = data["username"]
         room_id = data["room_id"]
         password = hashlib.sha1(
