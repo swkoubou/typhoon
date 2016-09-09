@@ -12,9 +12,10 @@ var cleate = function(){
         return;
     }
 
-    var uho ={
+    var uho ={data: {
         username: id,
         password: pass
+    }
     };
 
 
@@ -43,9 +44,10 @@ var login = function () {
     var id  = document.getElementById('name').value;
     var pass = document.getElementById('pass').value;
 
-    var uho ={
+    var uho ={data: {
         username: id,
         password: pass
+    }
     };
 
     $.ajax({

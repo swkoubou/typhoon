@@ -216,6 +216,7 @@ function roomjoin() {
         room_id: id,
         password: pass
     };
+    
 
 
     $.ajax({
