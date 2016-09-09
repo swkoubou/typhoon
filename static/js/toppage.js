@@ -21,7 +21,7 @@ var cleate = function(){
     $.ajax({
             type: 'POST',
             url: '/auth/signup',
-            data:JSON.stringify(uho),
+            data:{data:JSON.stringify(uho)},
         dataType:"json",
             success: function (data) {
                if(data.is_success == "true"){
