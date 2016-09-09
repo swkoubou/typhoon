@@ -51,7 +51,7 @@ var login = function () {
     $.ajax({
         type:'POST',
         url:'/auth/login',
-        data:{data:uho},
+        data:{data:JSON.stringify(uho)},
         dataType:"json",
         success:function(data){
             if(data.is_success == "true"){
