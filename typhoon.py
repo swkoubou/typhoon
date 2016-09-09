@@ -70,13 +70,8 @@ class MainHandler(BaseHandler):
     """
     @tornado.web.authenticated
     def get(self):
-        cache = []
-        for chat in Chat.genall():
-            chat["html"] = tornado.escape.to_basestring(
-                self.render_string("message.html", message=chat)
-            )
-            cache.append(chat)
-        self.render("ChatPage.html", messages=cache)
+        username = self.get_current_user().decode('utf-8')
+        self.render("ChatPage.html", username=username)
 
 
 class LoginHandler(BaseHandler):
@@ -113,17 +108,25 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
             except:
                 logging.error("Error sending message", exc_info=True)
 
-    def on_comment(self, comment):
+    def on_message(self, comment):
         logging.info("got comment %r", comment)
         parsed = tornado.escape.json_decode(comment)
 
+        date = datetime.datetime.now()
         comment = {
             "comment": parsed['comment'],
-            "date": datetime.datetime.now(),
-            "id": parsed['id'],
-            "room_number": parsed['room_number'],
+            "date": str(date),
+            "username": parsed['username'],
+            "room_id": parsed['room_id'],
         }
         ChatSocketHandler.send_updates(comment)
+        model.CommentCache.add(
+            comment['comment'],
+            date,
+            db.Users.get(db.Users.name == comment['username']).number,
+            db.Rooms.get(db.Rooms.id == comment['room_id']).number,
+        )
+
 
 # API endpoints
 class AuthLoginHandler(BaseHandler):
@@ -137,7 +140,8 @@ class AuthLoginHandler(BaseHandler):
         @username   user's name
         @password   user's password
         """
-        data = json.loads(self.get_argument("data"))
+        # get arguments from post method
+        data = tornado.escape.json_decode(self.request.body)
         username = data["username"]
         password = hashlib.sha1(
             bytes(  # unicode object must be encode before hashing
@@ -172,7 +176,7 @@ class AuthSignUpHandler(BaseHandler):
         @password   user's new password
         """
         # get arguments from post method
-        data = json.loads(self.get_argument("data"))
+        data = tornado.escape.json_decode(self.request.body)
         username = data["username"]
         password = hashlib.sha1(
             bytes(  # unicode object must be encode before hashing
@@ -205,7 +209,7 @@ class RoomCreateHandler(BaseHandler):
     """
     def post(self):
         # get arguments from post method
-        data = json.loads(self.get_argument("data"))
+        data = tornado.escape.json_decode(self.request.body)
         username = data["username"]
         room_id = data["room_id"]
         password = hashlib.sha1(
@@ -225,6 +229,7 @@ class RoomCreateHandler(BaseHandler):
                 id=room_id,
                 password=password,
             )
+            room = db.Rooms.get(db.Rooms.id == room_id)
             db.MenbersInfo.create(
                 user_number=db.Users.get(db.Users.name == username).number,
                 room_number=room.number,
@@ -248,7 +253,7 @@ class RoomEnterHandler(BaseHandler):
     """
     def post(self):
         # get arguments from post method
-        data = json.loads(self.get_argument("data"))
+        data = tornado.escape.json_decode(self.request.body)
         username = data["username"]
         room_id = data["room_id"]
         password = hashlib.sha1(
