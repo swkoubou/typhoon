@@ -12,10 +12,9 @@ var cleate = function(){
         return;
     }
 
-    var uho ={data: {
+    var uho ={
         username: id,
         password: pass
-    }
     };
 
 
@@ -44,16 +43,15 @@ var login = function () {
     var id  = document.getElementById('name').value;
     var pass = document.getElementById('pass').value;
 
-    var uho ={data: {
+    var uho ={
         username: id,
         password: pass
-    }
     };
 
     $.ajax({
         type:'POST',
         url:'/auth/login',
-        data:JSON.stringify(uho),
+        data:{data:JSON.stringify(uho)},
         dataType:"json",
         success:function(data){
             if(data.is_success == "true"){
