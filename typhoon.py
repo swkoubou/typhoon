@@ -49,6 +49,7 @@ class Application(tornado.web.Application):
 
 
 class PeeweeRequestHandler(tornado.web.RequestHandler):
+    """ DBアクセス用のイベント """
     def prepare(self):
         db.database.web.connect()
         return super(PeeweeRequestHandler, self).prepare()
@@ -65,9 +66,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
 
 class MainHandler(BaseHandler):
-    """
-    Main Handler
-    """
+    """ チャットページ """
     @tornado.web.authenticated
     def get(self):
         username = self.get_current_user().decode('utf-8')
@@ -75,19 +74,13 @@ class MainHandler(BaseHandler):
 
 
 class LoginHandler(BaseHandler):
-    """
-    Login Handler
-    """
-    def get(self):
-        self.render("Toppage.html")
-
-
-class ToppageHandler(BaseHandler):
+    """ ログイン(トップ)ページ """
     def get(self):
         self.render("Toppage.html")
 
 
 class ChatSocketHandler(tornado.websocket.WebSocketHandler):
+    """ チャットの通信部分(WebSocket) """
     waiters = set()
 
     def get_compression_options(self):
@@ -140,24 +133,24 @@ class AuthLoginHandler(BaseHandler):
         @username   user's name
         @password   user's password
         """
-        # get arguments from post method
+        # POSTからクエリを取得
         data = tornado.escape.json_decode(self.request.body)
         username = data["username"]
         password = hashlib.sha1(
-            bytes(  # unicode object must be encode before hashing
+            bytes(  # Unicodeオブジェクトはハッシュ化する前にエンコードする必要あり
                 data["password"],
                 "utf-8"
             )
         ).hexdigest()
 
-        # login check
+        # ログインチェック
         try:
             user = db.Users.get(db.Users.name == username)
-            if password == user.password:   # successs login!
+            if password == user.password:   # ログイン成功
                 self.write(json.dumps({'is_success': 'true'}))
                 self.set_secure_cookie("user", username)
                 return
-            else:
+            else:                           # ログイン失敗
                 self.write(json.dumps({'is_success': 'false'}))
                 return
         except:
@@ -175,23 +168,23 @@ class AuthSignUpHandler(BaseHandler):
         @username   user's new name
         @password   user's new password
         """
-        # get arguments from post method
+        # POSTからクエリを取得
         data = tornado.escape.json_decode(self.request.body)
         username = data["username"]
         password = hashlib.sha1(
-            bytes(  # unicode object must be encode before hashing
+            bytes(  # Unicodeオブジェクトはハッシュ化する前にエンコードする必要あり
                 data["password"],
                 "utf-8"
             )
         ).hexdigest()
 
 
-        # check whethre this username is already exists
-        # and when database don't have this username, to save user
+        # ユーザネームが既に登録されているか調べて、登録されていない場合はユーザ
+        # 名をDBに保存する
         try:
             db.Users.select().where(db.Users.name == username).get() # TODO: cange like AuthLoginHandler 
         except: 
-            # save username and password in database
+            # ユーザ名とパスワードをDBに保存
             db.Users.create(
                 id=uuid.uuid4(), 
                 name=username,
@@ -208,23 +201,23 @@ class RoomCreateHandler(BaseHandler):
     endpoint: /room/create
     """
     def post(self):
-        # get arguments from post method
+        # POSTからクエリを取得
         data = tornado.escape.json_decode(self.request.body)
         username = data["username"]
         room_id = data["room_id"]
         password = hashlib.sha1(
-            bytes(  # unicode object must be encode before hashing
+            bytes(  # Unicodeオブジェクトはハッシュ化する前にエンコードする必要あり
                 data["password"],
                 "utf-8"
             )
         ).hexdigest()
 
-        # check whethre this room_id is already exists
-        # and when database don't have this room_id, to save user
+        # ルーム名が既に登録されているか調べて、登録されていない場合はルーム名を
+        # DBに保存する
         try:
             db.Rooms.get(db.Rooms.id == room_id)
         except: 
-            # save room_id and password in database
+            # ルーム名とパスワードをDBに保存
             db.Rooms.create(
                 id=room_id,
                 password=password,
@@ -252,28 +245,28 @@ class RoomEnterHandler(BaseHandler):
     endpoint: /room/enter
     """
     def post(self):
-        # get arguments from post method
+        # POSTからクエリを取得
         data = tornado.escape.json_decode(self.request.body)
         username = data["username"]
         room_id = data["room_id"]
         password = hashlib.sha1(
-            bytes(  # unicode object must be encode before hashing
+            bytes(  # Unicodeオブジェクトはハッシュ化する前にエンコードする必要あり
                 data["password"],
                 "utf-8"
             )
         ).hexdigest()
 
-        # login check
+        # ログインチェック
         try:
             room = db.Rooms.get(db.Rooms.id == room_id)
-            if password == room.password:   # successs login!
+            if password == room.password:   # ログイン成功
                 db.MenbersInfo.create(
                     user_number=db.Users.get(db.Users.name == username).number,
                     room_number=room.number,
                 )
                 self.write(json.dumps({'is_success': 'true'}))
                 return
-            else:
+            else:                           # ログイン失敗
                 self.write(json.dumps({'is_success': 'false'}))
                 return
         except:
