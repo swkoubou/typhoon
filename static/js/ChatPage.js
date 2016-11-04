@@ -37,7 +37,7 @@ window.onload = function aa(){
                 $('#bottom').animate({width:"90%",left:"10%"});
                 $('.menu >span').animate({left:"0%"});
                 $('.menu > p').show();
-            //    $('#typ').animate({font-size:"200%",float'left'});
+                $('#typ').animate({width:"90%",height:"15%"});
                 flag = true;
             }else {
                 $('#left').animate({left: "-6%"});
@@ -45,7 +45,7 @@ window.onload = function aa(){
                 $('#bottom').animate({width:"96%",left:"4%"});
                 $('.menu >span').animate({left:"60%"});
                 $('.menu > p').hide();
-            //    $('#typ').animate({font-size:"50%",float:'right'});
+                $('#typ').animate({width:"40%",height:"10%"});
                 flag = false;
             }
         });
@@ -115,7 +115,6 @@ function aces() {
     for(p = 0;p < 4;p++) { //arr.length
         var ge = document.getElementById(i[p]).getElementsByClassName('title');
         var ser = ge[0].innerHTML;
-        console.log(ic);
         for (z = 0; z < 4; z++) {
         if(ser == ""){
             $("#sort").append('<div id="le' + i[p] + '" class="menu">' + '<span class="'+ ic[i[p]] +  '" aria-hidden="true"></span><p></p>' + '</div>');
@@ -145,6 +144,7 @@ function  standby() {
     $(function () {
         $('.glyphicon-pencil').click(function () {
             var color = $(this).parent().parent().css("background-color");
+            console.log(color);
             $('#send').animate({"backgroundColor":color});
             look = $(this).parent().parent().attr('id');
         });
@@ -266,11 +266,6 @@ function change() {
      ni = document.getElementById('ni').value;
      san= document.getElementById('san').value;
      yon = document.getElementById('yon').value;
-
-    //if(ici == ni || ici == san || ici == yon || ni == san || ni == yon || san == yon){
-      //  alert("ルームが重複しています");
-       // return;
-    //}
 
     $('#leone > span').className = ic[one];
     $('#two > span').className = ic[two];
