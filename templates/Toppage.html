@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Typhoon</title>
 
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="../static/css/toppage.css" rel="stylesheet">
 
+    <!--JS-->
+    <script src="../static/js/toppage.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -21,14 +24,13 @@
   </head>
   <body>
   <p id="title">Typhoon</p>
-  <img id="video" src="../static/fonts/typoonkun.png">
       <p id="Ty">Typhoonへようこそ</p>
       <p id="ya">新感覚、同時４ルームチャット</p>
 
     <div id="login">
       <input type="text" class="form-control input-lg" id="name" placeholder="UserName">
       <input type="password" class="form-control input-lg" id="pass" placeholder="Password">
-      <input type="button" class="btn btn-warning" id="log" value="Log In" onclick="login()">
+      <input type="button" class="btn btn-success" id="log" value="Log In" onclick="login()">
       <p id="uejyo"></p>
     </div>
 
@@ -37,15 +39,10 @@
       <input type="text" class="form-control input-lg" id="newname" placeholder="New UserName">
       <input type="password" class="form-control input-lg" id="newpass" placeholder="New Password">
       <input type="password" class="form-control input-lg" id="kakunin" placeholder="Confirm Password">
-      <input type="button" class="btn btn-warning" id="crea" value="Create" onclick="cleate()">
+      <input type="button" class="btn btn-success" id="crea" value="Create" onclick="cleate()">
       <p id="sitazyo"></p>
     </div>
 
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/toppage.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
