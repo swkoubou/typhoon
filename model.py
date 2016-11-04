@@ -6,11 +6,13 @@ import db
 
 
 class CommentCache:
+    """ DB用のキャッシュ """
     SAVE_GAIN_SIZE = 10
     cache = []
 
     @classmethod
     def save_to_db(cls):
+        """ キャッシュの中身をDBに保存する """
         db.database.connect()
         end = cls.cache[cls.SAVE_GAIN_SIZE]
         while cls.cache[0] is not end:
@@ -20,6 +22,7 @@ class CommentCache:
 
     @classmethod
     def add(cls, comment, date, id, room_number):
+        """ キャッシュにレコードを追加 """
         cls.cache.append({
             "comment": comment,
             "date": date,

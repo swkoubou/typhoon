@@ -56,6 +56,7 @@ body{
 }
 
 .menu > p{
+  font-size: 100%;
     float: right;
 }
 
@@ -123,10 +124,10 @@ body{
 }
 
 .title{
-    margin: 0 0 0 0;
-    font-size: 250%;
+    margin: 20px 0 0 0;
+    font-size: 150%;
     position: relative;
-    width:10%;
+    width:50%;
     left:5%;
     top:-95%;
 }
@@ -144,6 +145,8 @@ body{
 #sort div{
     font-size: 200%;
 }
+
+
 
 .ue{
     width:100%;
@@ -201,6 +204,7 @@ body{
 }
 
 .nusi{
+    color: red;
     margin-top: 0.5%;
     font-size: 130%;
 }

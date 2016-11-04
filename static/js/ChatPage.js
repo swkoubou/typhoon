@@ -36,6 +36,7 @@ window.onload = function aa(){
                 $('#bottom').animate({width:"90%",left:"10%"});
                 $('.menu >span').animate({left:"-60%"});
                 $('.menu > p').show();
+            //    $('#typ').animate({font-size:"200%",float'left'});
                 flag = true;
             }else {
                 $('#left').animate({left: "-6%"});
@@ -43,6 +44,7 @@ window.onload = function aa(){
                 $('#bottom').animate({width:"96%",left:"4%"});
                 $('.menu >span').animate({left:"130%"});
                 $('.menu > p').hide();
+            //    $('#typ').animate({font-size:"50%",float:'right'});
                 flag = false;
             }
         });
@@ -52,7 +54,7 @@ window.onload = function aa(){
     for(var i = 0;i < ku.length;i++){
         liste[i] =  $('#'+ku[i]+"> .ue > .title").text();
     }
-    
+
     pp();
     standby();
     list();
@@ -81,7 +83,7 @@ function send() {
     };
 
     updater.socket.send(JSON.stringify(uho));
-    
+
 
 }
 
@@ -216,7 +218,7 @@ function roomjoin() {
         room_id: id,
         password: pass
     };
-    
+
 
 
     $.ajax({
@@ -244,7 +246,7 @@ function change() {
     komeget();
 
     $(".come").empty();
-    
+
      ici = document.getElementById('ici').value;
      ni = document.getElementById('ni').value;
      san= document.getElementById('san').value;
@@ -265,11 +267,11 @@ function change() {
     $('#lethree > p').text(san);
     $('#lefour > p').text(yon);
 
-    $('#one > .come').text(totalcome[ici]);
-    $('#two > .come').text(totalcome[ni]);
-    $('#three > .come').text(totalcome[san]);
-    $('#four > .come').text(totalcome[yon]);
-    
+    $('#one > .come').html(totalcome[ici]);
+    $('#two > .come').html(totalcome[ni]);
+    $('#three > .come').html(totalcome[san]);
+    $('#four > .come').html(totalcome[yon]);
+
     $('#myModal').modal('hide');
 
     return;
@@ -286,5 +288,5 @@ function komeget(){
     totalcome[an] = $('#four').children('.come').html();
 
     console.log(totalcome);
-    
+
 }
