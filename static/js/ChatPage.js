@@ -3,6 +3,7 @@ var liste = new Array();
 var totalcome = {'共通ルーム': null,'hoge':null,'huge':null,'hige':null};
 var ic = {'one':'glyphicon glyphicon-book','two':'glyphicon glyphicon-star','three':'glyphicon glyphicon-bell','four':'glyphicon glyphicon-signal'};
 var ici,ni,san,yon;
+var kh = {'one':'ka','two':'ki','three':'ku','four':'ke'}  ;
 
 window.onload = function aa(){
     var flag = true;
@@ -119,17 +120,25 @@ function aces() {
     for(p = 0;p < 4;p++) { //arr.length
         var ge = document.getElementById(i[p]).getElementsByClassName('title');
         var ser = ge[0].innerHTML;
+        console.log(arr);
         for (z = 0; z < 4; z++) {
         if(ser == ""){
-            $("#sort").append('<div id="le' + i[p] + '" class="menu">' + '<span class="'+ ic[i[p]] +  '" aria-hidden="true"></span><p></p>' + '</div>');
+            $("#sort").append('<div id="le' + i[p] + '" class="menu">' + '<span id = "' + kh[i[p]] + '" class="'+ ic[i[p]] +  '" aria-hidden="true"></span><p></p>' + '</div>');
             break;
         }
             if (arr[z].indexOf(ser) != -1) {
                 $("#sort").append('<div id="le' + i[p] + '" class="menu">' + arr[z] + '</div>');
+                $("#le" + i[p]).children('span').attr('id',kh[i[p]]);
                 break;            
             }
         }
     }
+    console.log(document.getElementById("ki").className);
+    
+    document.getElementById("ka").className = ic['one'];
+     document.getElementById("ki").className = ic['two'];
+    document.getElementById("ku").className = ic['three']; 
+     document.getElementById("ke").className = ic['four'];
     return;
 }
 
@@ -261,7 +270,7 @@ function change() {
      san= document.getElementById('san').value;
      yon = document.getElementById('yon').value;
 
-    $('#leone > span').className = ic[one];
+    $('#one > span').className = ic[one];
     $('#two > span').className = ic[two];
     $('#three > span').className = ic[three];
     $('#four > span').className = ic[four];
