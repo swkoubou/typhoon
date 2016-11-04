@@ -36,6 +36,7 @@ class Application(tornado.web.Application):
             (r"/room/create", RoomCreateHandler),
             (r"/room/invite", RoomInviteHandler),
             (r"/room/enter", RoomEnterHandler),
+            (r"/room/log", RoomLogHandler),
         ]
         settings = dict(
             cookie_secret="__TDDO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__",
@@ -272,6 +273,26 @@ class RoomEnterHandler(BaseHandler):
         except:
             self.write(json.dumps({'is_success': 'false'}))
 
+
+class RoomLogHandler(BaseHandler):
+    """ 過去ログを返す """
+    def post(self):
+        # POSTからクエリを取得
+        data = tornado.escape.json_decode(self.request.body)
+        room_id = data["room_id"]
+        count = data["count"] if "count" in data else 100
+        since_id = data["since_id"] if "since_id" in data else None
+        room_number = db.Rooms.get(db.Rooms.id == room_id).number
+        comments = db.Comments.select().where(db.Comments.room_number == room_number)
+        log = []
+        for comment in comments:
+            log.append({
+                "comment": comment.comment,
+                "date": str(comment.date),
+                "username": comment.user,
+                "room_id": room_id
+            })
+        self.write(json.dumps({'log': log}))
 
 def main():
     tornado.options.parse_command_line()
