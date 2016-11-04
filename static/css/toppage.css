@@ -1,5 +1,5 @@
 body{
-    background-color: #5cb58e;
+    background-color: #160802;
     width: 100%;
     height:100%;
     overflow: hidden;
@@ -19,7 +19,7 @@ img {
 }
 
 #login{
-    background-color: #F79F66;
+    background-color: white;
     width: 30%;
     height:20%;
     position: absolute;
@@ -51,11 +51,10 @@ img {
     width: 34%;
     padding: 3px;
     font-size: 180%;
-    color: white;
 }
 
 #create{
-    background-color: #F79F66;
+    background-color: white;
     width: 30%;
     height:40%;
     position: absolute;
