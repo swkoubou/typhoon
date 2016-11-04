@@ -67,3 +67,6 @@ venv/
 # config file
 config.py
 !config/config.*
+
+# server
+nohup.out
