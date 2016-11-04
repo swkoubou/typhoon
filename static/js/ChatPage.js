@@ -1,6 +1,7 @@
 var look = "";
 var liste = new Array();
-var totalcome = {'hage': null,'hoge':null,'huge':null,'hige':null};
+var totalcome = {'共通ルーム': null,'hoge':null,'huge':null,'hige':null};
+var ic = {'one':'glyphicon glyphicon-book','two':'glyphicon glyphicon-star','three':'glyphicon glyphicon-bell','four':'glyphicon glyphicon-signal'};
 var ici,ni,san,yon;
 
 window.onload = function aa(){
@@ -34,7 +35,7 @@ window.onload = function aa(){
                 $('#left').animate({left:"0%"});
                 $('#main').animate({width:"90%",left:"10%"});
                 $('#bottom').animate({width:"90%",left:"10%"});
-                $('.menu >span').animate({left:"-60%"});
+                $('.menu >span').animate({left:"0%"});
                 $('.menu > p').show();
             //    $('#typ').animate({font-size:"200%",float'left'});
                 flag = true;
@@ -42,7 +43,7 @@ window.onload = function aa(){
                 $('#left').animate({left: "-6%"});
                 $('#main').animate({width:"96%",left:"4%"});
                 $('#bottom').animate({width:"96%",left:"4%"});
-                $('.menu >span').animate({left:"130%"});
+                $('.menu >span').animate({left:"60%"});
                 $('.menu > p').hide();
             //    $('#typ').animate({font-size:"50%",float:'right'});
                 flag = false;
@@ -51,13 +52,14 @@ window.onload = function aa(){
     });
 
     var ku = $('#main').sortable("toArray");
-    for(var i = 0;i < ku.length;i++){
-        liste[i] =  $('#'+ku[i]+"> .ue > .title").text();
+    for(var i = 0;i < ku.length;i++) {
+        liste[i] = $('#' + ku[i] + "> .ue > .title").text();
     }
+    console.log(liste);
 
     pp();
-    standby();
     list();
+    standby();
     komeget();
     sort.addEventListener('mouseup',function () {setTimeout(pp,200)},false);
 };
@@ -103,7 +105,7 @@ function list(){
     }
 }
 
-function ace() {
+function aces() {
     var i = $('#main').sortable("toArray");
     var arr = [];
     $("#sort div").each(function(){
@@ -113,12 +115,19 @@ function ace() {
     for(p = 0;p < 4;p++) { //arr.length
         var ge = document.getElementById(i[p]).getElementsByClassName('title');
         var ser = ge[0].innerHTML;
+        console.log(ic);
         for (z = 0; z < 4; z++) {
+        if(ser == ""){
+            $("#sort").append('<div id="le' + i[p] + '" class="menu">' + '<span class="'+ ic[i[p]] +  '" aria-hidden="true"></span><p></p>' + '</div>');
+            break;
+        }
             if (arr[z].indexOf(ser) != -1) {
                 $("#sort").append('<div id="le' + i[p] + '" class="menu">' + arr[z] + '</div>');
+                break;            
             }
         }
     }
+    return;
 }
 
 function  standby() {
@@ -128,9 +137,9 @@ function  standby() {
         });
     });
     $(function () {
-        $('body').mouseup(function () {
+        $('#main').mouseup(function () {
             $('#main').sortable("disable");
-            setTimeout(ace,200);
+            setTimeout(aces,200);
         });
     });
     $(function () {
@@ -140,7 +149,6 @@ function  standby() {
             look = $(this).parent().parent().attr('id');
         });
     });
-    ace();
 }
 
 function pp() {
@@ -179,8 +187,12 @@ function roomset() {
         password: pass
     };
 
-
-    $.ajax({
+    alert("OK");
+    liste.push(id);
+    totalcome[id] = null;
+    list();
+    $('#roomad').modal('hide');
+   /* $.ajax({
         type: 'POST',
         url: '/room/create',
         data:JSON.stringify(uho),
@@ -199,7 +211,7 @@ function roomset() {
         error: function () {
             alert("kuso");
         }
-    });
+    });*/
 }
 
 function roomjoin() {
@@ -219,9 +231,12 @@ function roomjoin() {
         password: pass
     };
 
+    alert("OK");
+    liste.push(id);
+    list();
+    $('#roomad').modal('hide');
 
-
-    $.ajax({
+    /*$.ajax({
         type: 'POST',
         url: '/room/enter',
         data:JSON.stringify(uho),
@@ -239,7 +254,7 @@ function roomjoin() {
         error: function () {
             alert("kuso");
         }
-    });
+    });*/
 }
 
 function change() {
@@ -252,10 +267,15 @@ function change() {
      san= document.getElementById('san').value;
      yon = document.getElementById('yon').value;
 
-    if(ici == ni || ici == san || ici == yon || ni == san || ni == yon || san == yon){
-        alert("ルームが重複しています");
-        return;
-    }
+    //if(ici == ni || ici == san || ici == yon || ni == san || ni == yon || san == yon){
+      //  alert("ルームが重複しています");
+       // return;
+    //}
+
+    $('#leone > span').className = ic[one];
+    $('#two > span').className = ic[two];
+    $('#three > span').className = ic[three];
+    $('#four > span').className = ic[four];
 
     $('#one > .ue > .title').text(ici);
     $('#two > .ue > .title').text(ni);
@@ -269,12 +289,13 @@ function change() {
 
     $('#one > .come').html(totalcome[ici]);
     $('#two > .come').html(totalcome[ni]);
-    $('#three > .come').html(totalcome[san]);
+   $('#three > .come').html(totalcome[san]);
     $('#four > .come').html(totalcome[yon]);
+    
 
     $('#myModal').modal('hide');
-
-    return;
+    
+    
 }
 
 function komeget(){

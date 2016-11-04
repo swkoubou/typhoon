@@ -1,7 +1,6 @@
 from peewee import *
-from config import db_server
 
-database = PostgresqlDatabase('typhoon', db_server['user'])
+database = PostgresqlDatabase('typhoon', **{'user': 'uryoya'})
 
 class UnknownField(object):
     pass
