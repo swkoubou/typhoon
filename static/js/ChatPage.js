@@ -66,16 +66,20 @@ window.onload = function aa(){
 
 function send() {
     if(look == ""){
-        alert("nassi");
+        alert("送信先を指定してください");
         return;
     }
     var text = document.getElementById('text').value;
     if(text == ""){
-        alert("nassi");
+        alert("送信内容を記入してください");
         return;
     }
     var user = $('#namae').text();
     var room = $("#" +look +"> .ue > .title").text();
+    if(room == ""){
+        alert("空のルームには送信できません");
+        return;
+    }
     document.getElementById('text').value = "";//テキストボックスを空に
 
     var uho ={
@@ -186,13 +190,8 @@ function roomset() {
         room_id: id,
         password: pass
     };
-
-    alert("OK");
-    liste.push(id);
-    totalcome[id] = null;
-    list();
-    $('#roomad').modal('hide');
-   /* $.ajax({
+    
+    $.ajax({
         type: 'POST',
         url: '/room/create',
         data:JSON.stringify(uho),
@@ -211,7 +210,7 @@ function roomset() {
         error: function () {
             alert("kuso");
         }
-    });*/
+    });
 }
 
 function roomjoin() {
@@ -231,12 +230,7 @@ function roomjoin() {
         password: pass
     };
 
-    alert("OK");
-    liste.push(id);
-    list();
-    $('#roomad').modal('hide');
-
-    /*$.ajax({
+    $.ajax({
         type: 'POST',
         url: '/room/enter',
         data:JSON.stringify(uho),
@@ -254,7 +248,7 @@ function roomjoin() {
         error: function () {
             alert("kuso");
         }
-    });*/
+    });
 }
 
 function change() {
