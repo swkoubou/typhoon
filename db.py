@@ -1,5 +1,5 @@
 from peewee import *
-from config db_server
+from config import db_server
 
 database = PostgresqlDatabase(db_server['name'], db_server['user'])
 
