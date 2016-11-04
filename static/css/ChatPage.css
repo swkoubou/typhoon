@@ -94,42 +94,27 @@ body{
     font-size: 150%;
 }
 
-#one span{
+.glyphicon-pencil{
     position: relative;
-    left: 70%;
+    left: 62%;
     font-size: 250%;
     margin-top: 3%;
 }
 
-#two span{
+.glyphicon-resize-horizontal{
     position: relative;
-    left: 70%;
-    font-size: 250%;
-    margin-top: 3%;
-}
-
-#three span{
-    position: relative;
-    left: 70%;
-    font-size: 250%;
-    margin-top: 3%;
-}
-
-
-#four span{
-    position: relative;
-    left: 70%;
+    left: 65%;
     font-size: 250%;
     margin-top: 3%;
 }
 
 .title{
-    margin: 20px 0 0 0;
+    margin:-40px 0 0 0;
     font-size: 150%;
     position: relative;
     width:50%;
-    left:5%;
-    top:-95%;
+    left:17%;
+
 }
 
 
@@ -139,11 +124,12 @@ body{
 
 #sort{
     position: relative;
-    top:10%;
+    top:18%;
 }
 
 #sort div{
-    font-size: 200%;
+    font-size: 150%;
+    margin-top: 5%;
 }
 
 
@@ -207,4 +193,32 @@ body{
     color: red;
     margin-top: 0.5%;
     font-size: 130%;
+}
+
+#ma{
+    font-size: 250%;
+    margin-left: 2%;
+    color: #FFFFFF;
+}
+#mi{
+    font-size: 250%;
+    margin-left: 2%;
+    color: #FFFFFF;
+}
+#mu{
+    font-size: 250%;
+    margin-left: 2%;
+    color: #FFFFFF;
+}
+#me{
+    font-size: 250%;
+    margin-left: 2%;
+    color: #FFFFFF;
+}
+
+#typ{
+    position: absolute;
+    width: 90%;
+    height: 15%;
+    right: 0%;
 }
