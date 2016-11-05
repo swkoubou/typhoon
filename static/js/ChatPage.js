@@ -52,9 +52,7 @@ window.onload = function aa(){
         });
     });
 
-    setTimeout(function() {
-        window.scroll(0,$('.come').height());
-    },0);
+    $('.come').animate({scrollTop: $('.come')[0].scrollHeight}, 'fast');
 
 
     var ku = $('#main').sortable("toArray");
