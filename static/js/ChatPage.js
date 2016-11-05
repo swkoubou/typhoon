@@ -51,8 +51,7 @@ window.onload = function aa(){
             }
         });
     });
-
-    $('.come').animate({scrollTop: $('.come')[0].scrollHeight}, 'fast');
+    
 
 
     var ku = $('#main').sortable("toArray");
