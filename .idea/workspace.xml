@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4393dd97-6343-4ed4-8ed5-f27f5fc10d93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/ChatPage.js" afterPath="$PROJECT_DIR$/static/js/ChatPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/System.js" afterPath="$PROJECT_DIR$/static/js/System.js" />
-    </list>
+    <list default="true" id="4393dd97-6343-4ed4-8ed5-f27f5fc10d93" name="Default" comment="" />
     <ignored path="typhoon.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -355,12 +352,12 @@
       <workItem from="1478253703162" duration="365000" />
       <workItem from="1478254818277" duration="3495000" />
       <workItem from="1478266004079" duration="225000" />
-      <workItem from="1478308510141" duration="338000" />
+      <workItem from="1478308510141" duration="353000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45722000" />
+    <option name="totallyTimeSpent" value="45737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
