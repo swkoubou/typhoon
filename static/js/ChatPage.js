@@ -52,6 +52,11 @@ window.onload = function aa(){
         });
     });
 
+    setTimeout(function() {
+        window.scroll(0,$('.come').height());
+    },0);
+
+
     var ku = $('#main').sortable("toArray");
     for(var i = 0;i < ku.length;i++) {
         liste[i] = $('#' + ku[i] + "> .ue > .title").text();
@@ -120,7 +125,7 @@ function aces() {
     for(p = 0;p < 4;p++) { //arr.length
         var ge = document.getElementById(i[p]).getElementsByClassName('title');
         var ser = ge[0].innerHTML;
-        console.log(arr);
+        //console.log(arr);
         for (z = 0; z < 4; z++) {
         if(ser == ""){
             $("#sort").append('<div id="le' + i[p] + '" class="menu">' + '<span id = "' + kh[i[p]] + '" class="'+ ic[i[p]] +  '" aria-hidden="true"></span><p></p>' + '</div>');
@@ -133,7 +138,7 @@ function aces() {
             }
         }
     }
-    console.log(document.getElementById("ki").className);
+    //console.log(document.getElementById("ki").className);
     
     document.getElementById("ka").className = ic['one'];
      document.getElementById("ki").className = ic['two'];
