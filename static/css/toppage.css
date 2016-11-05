@@ -72,8 +72,14 @@ img {
     width: 95%;
     font-size: 150%;
 }
-
-
+#intoroduse {
+    position: absolute;
+    top: -230px;%;
+    left:-200%;
+    width: 150%;
+    height:150%;
+    font-size: 150%;
+}
 #newpass{
     position: absolute;
     top:40%;
