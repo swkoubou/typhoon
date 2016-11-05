@@ -49,6 +49,7 @@ var updater = {
             if(message.room_id == $("#" + i[p]+"> .ue > .title").text()){
                 $("#"+i[p]+" .come").append("<p class='nusi'>"+message.username+"</p>" + "<p class='yonex'>"+message.comment+"</p>");
                 $("#"+i[p] +" .come p:last").hide().slideDown();
+                $('.come').animate({scrollTop: $('.come')[0].scrollHeight}, 'fast');
             }
         }
     }
