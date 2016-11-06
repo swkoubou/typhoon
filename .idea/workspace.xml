@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4393dd97-6343-4ed4-8ed5-f27f5fc10d93" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/System.js" afterPath="$PROJECT_DIR$/static/js/System.js" />
     </list>
     <ignored path="typhoon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +38,8 @@
           <file leaf-file-name="System.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/System.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="666">
-                  <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+                <state relative-caret-position="486">
+                  <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -265,12 +264,12 @@
       <workItem from="1478266004079" duration="225000" />
       <workItem from="1478308510141" duration="950000" />
       <workItem from="1478392401484" duration="6000" />
-      <workItem from="1478393199319" duration="196000" />
+      <workItem from="1478393199319" duration="335000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46536000" />
+    <option name="totallyTimeSpent" value="46675000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="876" extended-state="6" />
@@ -680,8 +679,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/System.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+        <state relative-caret-position="486">
+          <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
           <folding />
         </state>
       </provider>
